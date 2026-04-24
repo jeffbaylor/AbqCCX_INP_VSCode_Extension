@@ -94,11 +94,11 @@ CCX element names generally follow Abaqus conventions (e.g. `C3D8`, `S4`, `B31`)
 
 ## Building from Source
 
-[Node.js](https://nodejs.org) is needed for building
+[Node.js](https://nodejs.org) is required.
 
 ```bash
 npm install
-npm run compile
+node ./node_modules/typescript/bin/tsc -p ./
 ```
 
 Press `F5` in VS Code to launch the Extension Development Host for testing.
@@ -106,7 +106,7 @@ Press `F5` in VS Code to launch the Extension Development Host for testing.
 ## Packaging
 
 ```bash
-npm run package
+node -e "require('@vscode/vsce').createVSIX({cwd: process.cwd()}).then(() => console.log('done')).catch(e => console.error(e))"
 ```
 
 This produces a `.vsix` file that can be installed via **Extensions: Install from VSIX** in VS Code.
