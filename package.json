@@ -2,7 +2,7 @@
   "name": "abaqus-inp",
   "displayName": "Abaqus Input File",
   "description": "Syntax highlighting and language support for Abaqus .inp input files",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "jeffbaylor",
   "engines": {
     "vscode": "^1.74.0"
