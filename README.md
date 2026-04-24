@@ -94,6 +94,8 @@ CCX element names generally follow Abaqus conventions (e.g. `C3D8`, `S4`, `B31`)
 
 ## Building from Source
 
+[Node.js](https://nodejs.org) is needed for building
+
 ```bash
 npm install
 npm run compile
