@@ -23,6 +23,7 @@
     "type": "git",
     "url": "https://github.com/jeffbaylor/AbqCCX_INP_VSCode_Extension.git"
   },
+  "icon": "icon.png",
   "license": "MIT",
   "main": "./out/extension.js",
   "contributes": {
