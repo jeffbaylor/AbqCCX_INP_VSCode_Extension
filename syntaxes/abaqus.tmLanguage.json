@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Abaqus Input File",
+  "scopeName": "source.abaqus",
+  "fileTypes": ["inp"],
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#keyword-line" },
+    { "include": "#data-line" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.double-asterisk.abaqus",
+      "match": "^\\*\\*.*$"
+    },
+
+    "keyword-line": {
+      "name": "meta.keyword-line.abaqus",
+      "begin": "^(\\*)(?!\\*)",
+      "end": "$",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.keyword.abaqus" }
+      },
+      "patterns": [
+        { "include": "#keyword-end-block" },
+        { "include": "#keyword-block" },
+        { "include": "#keyword-procedure" },
+        { "include": "#keyword-output" },
+        { "include": "#keyword-material" },
+        { "include": "#keyword-interaction" },
+        { "include": "#keyword-other" },
+        { "include": "#parameter" },
+        { "include": "#comma" }
+      ]
+    },
+
+    "keyword-end-block": {
+      "name": "keyword.control.end-block.abaqus",
+      "match": "(?i)END\\s+(?:STEP|PART|INSTANCE|ASSEMBLY)"
+    },
+
+    "keyword-block": {
+      "name": "keyword.control.block.abaqus",
+      "match": "(?i)(?:STEP|PART|INSTANCE|ASSEMBLY)(?=\\s*(?:,|$))"
+    },
+
+    "keyword-procedure": {
+      "name": "keyword.control.procedure.abaqus",
+      "match": "(?i)(?:STATIC|DYNAMIC(?:\\s+EXPLICIT)?|FREQUENCY|BUCKLE|HEAT\\s+TRANSFER|COUPLED\\s+TEMPERATURE-DISPLACEMENT|SOILS|VISCO|GEOSTATIC|MODAL\\s+DYNAMIC)(?=\\s*(?:,|$))"
+    },
+
+    "keyword-output": {
+      "name": "keyword.other.output.abaqus",
+      "match": "(?i)(?:OUTPUT|NODE\\s+OUTPUT|ELEMENT\\s+OUTPUT|CONTACT\\s+OUTPUT|ENERGY\\s+OUTPUT|HISTORY\\s+OUTPUT|FIELD\\s+OUTPUT|MONITOR|PRINT|RESTART)(?=\\s*(?:,|$))"
+    },
+
+    "keyword-material": {
+      "name": "keyword.other.material.abaqus",
+      "match": "(?i)(?:MATERIAL|ELASTIC|PLASTIC|DENSITY|CONDUCTIVITY|SPECIFIC\\s+HEAT|EXPANSION|CREEP|HYPERELASTIC|RATE\\s+DEPENDENT|DAMAGE\\s+INITIATION|DAMAGE\\s+EVOLUTION|POROUS\\s+ELASTIC|VISCOELASTIC|SECTION\\s+CONTROLS)(?=\\s*(?:,|$))"
+    },
+
+    "keyword-interaction": {
+      "name": "keyword.other.interaction.abaqus",
+      "match": "(?i)(?:SURFACE(?:\\s+INTERACTION)?|CONTACT(?:\\s+PAIR)?|FRICTION|COHESIVE\\s+BEHAVIOR|NORMAL\\s+BEHAVIOR|TANGENTIAL\\s+BEHAVIOR)(?=\\s*(?:,|$))"
+    },
+
+    "keyword-other": {
+      "name": "keyword.other.abaqus",
+      "match": "(?i)[A-Z][A-Z0-9 \\-]*(?=\\s*(?:,|$))"
+    },
+
+    "parameter": {
+      "name": "meta.parameter.abaqus",
+      "match": "([A-Za-z][A-Za-z0-9 ]*)\\s*=\\s*([^,\\n]*)",
+      "captures": {
+        "1": { "name": "variable.parameter.abaqus" },
+        "2": { "name": "string.unquoted.parameter-value.abaqus" }
+      }
+    },
+
+    "comma": {
+      "name": "punctuation.separator.comma.abaqus",
+      "match": ","
+    },
+
+    "data-line": {
+      "name": "meta.data-line.abaqus",
+      "begin": "^(?!\\*)",
+      "end": "$",
+      "patterns": [
+        { "include": "#number" },
+        { "include": "#label" },
+        { "include": "#comma" }
+      ]
+    },
+
+    "number": {
+      "name": "constant.numeric.abaqus",
+      "match": "[+-]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[Ee][+-]?\\d+)?"
+    },
+
+    "label": {
+      "name": "entity.name.label.abaqus",
+      "match": "[A-Za-z][A-Za-z0-9_\\-\\.]*"
+    }
+  }
+}
