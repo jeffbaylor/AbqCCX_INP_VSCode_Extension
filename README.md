@@ -74,13 +74,13 @@ Abaqus input files use a keyword-based format:
 
 ## Abaqus vs CalculiX
 
-CalculiX (CCX) was designed to be largely input-compatible with Abaqus. Most keyword syntax, data line formats, and block structures are identical. This document records the notable differences.
+CalculiX (CCX) was designed to be largely input-compatible with Abaqus. Most keyword syntax, data line formats, and block structures are identical.
 
 ### Output Requests
 
 Both solvers support `*NODE FILE` / `*EL FILE` for binary results and `*NODE PRINT` / `*EL PRINT` for text results. The binary results for Abaqus are written to a `.fil` file, while CCX writes to a `.frd` file. Both use the `.dat` extension for text results, though the format is different.
 
-Abaqus has an additional, output system that writes to the `.odb` output database (viewable in Abaqus Viewer / CAE). CalculiX has no equivalent:
+Abaqus has an additional output system that writes to an `.odb` output database (viewable in Abaqus Viewer / CAE). CalculiX has no equivalent.
 
 | | Abaqus | CalculiX |
 |---|---|---|
